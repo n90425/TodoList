@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+</head>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    .wrapper {
+        /* background-color: aqua;             */
+    }
+
+    header {
+        font-size: 100px;
+        margin-top: 100px;
+    }
+
+    #todo {
+
+        margin-top: 100px;
+        width: 500px;
+        height: 46px;
+        border-radius: 24px;
+        border: 1px solid #dfe1e5;
+        padding-left: 50px;
+        padding-right: 80px;
+        font-size: 25px;
+
+    }
+
+    #add {
+        font-size: 28px;
+        background-color: antiquewhite
+    }
+
+    #alldell {
+        font-size: 28px;
+        background-color: red
+    }
+
+    #result {}
+
+    li {
+        list-style-type: none;
+        /* li에 점 삭제 */
+        text-align: left;
+        padding: 0 0 0 150px;
+        font-size: 17px;
+    }
+
+    li>button {
+        border: none;
+        color: black;
+        background-color: white;
+        /* padding:0 0 0 200px; */
+    }
+
+    /* 페이지 처리 */
+    .pagination{
+        text-align: center;
+    }
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        /* text-align: center; */
+    }
+
+    .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+</style>
+
+<body>
+    <div class="wrapper">
+        <!-- UI를 만든다 -->
+        <header>TodoList</header>
+        <!-- 1.리스트 작성 input 박스랑 저장버튼 만들기 -->
+        <div>
+            <input type="text" id="todo" onkeydown="if(event.keyCode===13) addlist()" autofocus>
+            <!-- autofocus 페이지 로드되면 자동으로 focus 잡음 -->
+            <button id='add' onclick="addlist()"> 저장 </button>
+            <!-- onkeydown="if(event.keyCode===13) addlist()" 작성 후 엔터키로 저장-->
+        </div>
+        <!-- 2.리스트 작성하면 저장될 공간 만들기 -->
+        <div>
+            <ul id="todolist">
+                <li>
+                    <div id="result"></div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <button id="alldell" onclick="alldel()">전체 삭제</button>
+        </div>
+
+    </div>
+    <script>
+        window.onload = function () {
+            let todoArea = document.getElementById('todo');     //입력
+            let listArea = document.getElementById('todolist'); //리스트
+            // let add = document.getElementById('add');        //버튼
+
+        }
+
+        function addlist() {
+            let todoArea = document.getElementById('todo');
+            let listArea = document.getElementById('todolist');
+            todoArea.focus();   
+            if (todoArea.value == false) {
+                alert('내용을 입력하세요!');
+            } else {
+                let listArea = document.createElement("li");
+                let del = document.createElement('button');
+
+                // listArea.option.add(todoArea.value);
+                // listArea.value.add(todoArea.value);
+                // listArea.innerHTML = todoArea.value;
+                listArea.innerText = todoArea.value;
+                //list.innerHTML = addValue.value;
+                result.appendChild(listArea); //추가된 할일에 할일 리스트 추가하기
+                listArea.appendChild(del);    //할일 리스트 추가시 삭제버튼도 추가    
+                del.innerText = '❌'
+
+                del.addEventListener("click", deletelist);  // button클릭 시 deletelist 호출
+
+                //debugger;     //aaa를 입력해서 add버튼을 누르고 디버그로 확인해보면 <select id="todolist" multiple></select>에 aaa가 들어간다
+                //근데 화면에는 안나온다
+                todoArea.value = '';    //입력 후 input값 삭제
+            }
+        }
+
+
+        //개별삭제
+        function deletelist(e) { //삭제 버튼 클릭시 
+            let todoArea = document.getElementById('todo');
+            let list = e.target.parentElement;  // 삭제하는 li를 parentElement를 이용해 조회/저장
+            todoArea.focus();
+            list.remove();
+
+            console.log(list)
+
+            // debugger;
+        }
+
+        //전체삭제
+        function alldel() {
+            let listArea = document.getElementById('todolist');
+            listArea.innerHTML = '';
+            window.location.reload()    //전체삭제 후 새로고침
+
+        }
+
+    </script>
+</body>
+
+</html>
+
