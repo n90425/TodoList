@@ -1,0 +1,74 @@
+body {
+    text-align: center;
+}
+
+.wrapper {
+    /* background-color: aqua;             */
+}
+
+header {
+    font-size: 100px;
+    margin-top: 100px;
+}
+
+#todo {
+
+    margin-top: 100px;
+    width: 500px;
+    height: 46px;
+    border-radius: 24px;
+    border: 1px solid #dfe1e5;
+    padding-left: 50px;
+    padding-right: 80px;
+    font-size: 25px;
+
+}
+
+#add {
+    font-size: 28px;
+    background-color: antiquewhite
+}
+
+#alldell {
+    font-size: 28px;
+    background-color: red
+}
+
+#result {}
+
+li {
+    list-style-type: none;
+    /* li에 점 삭제 */
+    text-align: left;
+    padding: 0 0 0 150px;
+    font-size: 17px;
+}
+
+li>button {
+    border: none;
+    color: black;
+    background-color: white;
+    /* padding:0 0 0 200px; */
+}
+
+/* 페이지 처리 */
+.pagination{
+    text-align: center;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    /* text-align: center; */
+}
+
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
